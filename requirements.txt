@@ -1,0 +1,30 @@
+# Core Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+bcrypt==4.2.1  # Pin older bcrypt version for passlib compatibility
+python-multipart==0.0.6
+
+# Database (SQLAlchemy for scalability)
+sqlalchemy==2.0.23
+alembic==1.12.1
+
+# Future: OAuth2 (Google Login)
+# google-auth==2.25.2
+# google-auth-oauthlib==1.2.0
+
+# Future: Payments (Stripe/Razorpay)
+# stripe==7.8.0
+
+# Future: Email (SendGrid/AWS SES)
+# sendgrid==6.11.0
+
+# Future: Cloud Storage (GCP)
+# google-cloud-storage==2.13.0
+
+# Utilities
+python-dotenv==1.0.0
+pydantic==2.9.2  # Removed [email] extra to avoid compilation issues

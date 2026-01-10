@@ -1,0 +1,56 @@
+{
+  "id": "beach",
+  "name": "Beach Wedding",
+  "category": "wedding",
+  "description": "Soft beach aesthetic with floating lanterns and ocean-inspired colors",
+  "version": "1.0.0",
+  "preview_image": "assets/images/24548536_l.jpg",
+  "author": "Shubham Raj",
+  "features": [
+    "Floating lantern animations",
+    "7-section layout",
+    "Photo gallery",
+    "Things to know section",
+    "WhatsApp RSVP",
+    "Google Maps integration",
+    "Scroll animations"
+  ],
+  "colorScheme": {
+    "primary": "#87CEEB",
+    "secondary": "#F5DEB3",
+    "accent": "#FFB6C1"
+  },
+  "files": {
+    "html": "index.html",
+    "css": "styles.css",
+    "js": "config-loader.js",
+    "assets": "assets/"
+  },
+  "configSchema": {
+    "couple": {
+      "type": "object",
+      "required": true,
+      "fields": ["name1", "name2", "fullNames", "tagline"]
+    },
+    "event": {
+      "type": "object",
+      "required": true,
+      "fields": ["title", "date", "time", "venue"]
+    },
+    "images": {
+      "type": "object",
+      "required": true,
+      "fields": ["heroImage", "lanternImage", "galleryImages"]
+    },
+    "styling": {
+      "type": "object",
+      "required": true,
+      "fields": ["colorScheme", "fonts"]
+    },
+    "animations": {
+      "type": "object",
+      "required": true,
+      "fields": ["enableLanterns", "lanternCount", "enableScrollAnimations"]
+    }
+  }
+}

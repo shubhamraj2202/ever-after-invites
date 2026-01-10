@@ -1,0 +1,97 @@
+{
+  "couple": {
+    "name1": "Sonakshi",
+    "name2": "Shubham",
+    "fullNames": "Sonakshi & Shubham"
+  },
+  "event": {
+    "title": "Engagement & Ceremonies",
+    "subtitle": "Join us for a engagement celebration",
+    "date": "January 16, 2026",
+    "dayOfWeek": "Friday",
+    "time": "6:00 PM onwards",
+    "venue": {
+      "name": "Foo Bar Hall",
+      "address": "Foo Bar Hall Noida, Uttar Pradesh 201301",
+      "googleMapsLink": "https://maps.google.com/?q=Sunset+Beach+Resort+Mumbai"
+    }
+  },
+  "content": {
+    "heroMessage": "We're getting engaged!",
+    "ourStoryTitle": "Our Story",
+    "ourStory": "We are excited to announce our engagement and invite you to celebrate this special moment with us. Your presence would make our day even more memorable as we begin this beautiful journey together.",
+    "rsvpTitle": "Join Us",
+    "rsvpMessage": "Please confirm your attendance by clicking the button below. We can't wait to celebrate with you!",
+    "rsvpWhatsApp": "+91 9835290931",
+    "rsvpWhatsAppMessage": "Hi! I'm confirming my attendance for Sonakshi & Shubham's engagement ceremony.",
+    "hashtag": "#SonakshiShubham",
+    "galleryTitle": "Our Moments"
+  },
+  "thingsToKnow": {
+    "title": "Things to Know",
+    "items": [
+      {
+        "icon": "👔",
+        "label": "Dress Code",
+        "value": "Smart Casual / Indian Ethnic"
+      },
+      {
+        "icon": "🚗",
+        "label": "Parking",
+        "value": "Complimentary valet parking available"
+      },
+      {
+        "icon": "🏨",
+        "label": "Accommodation",
+        "value": "Hotel recommendations available upon request"
+      },
+      {
+        "icon": "📞",
+        "label": "Contact",
+        "value": "For queries: 1+91 9835290931"
+      },
+      {
+        "icon": "#️⃣",
+        "label": "Hashtag",
+        "value": "#SonakshiShubham"
+      }
+    ]
+  },
+  "footer": {
+    "thankYouMessage": "Thank you for being part of our special day!",
+    "contactEmail": "shubhamraj2202@gmail.com, sona2901@gmail.com",
+    "year": "2026"
+  },
+  "images": {
+    "heroImage": "assets/images/couple.png",
+    "lanternImage": "assets/images/lantern-original.png",
+    "galleryImages": [
+      "assets/images/24548536_l.jpg",
+      "assets/images/24548536_l.jpg",
+      "assets/images/24548536_l.jpg",
+      "assets/images/24548536_l.jpg",
+      "assets/images/24548536_l.jpg",
+      "assets/images/24548536_l.jpg"
+    ]
+  },
+  "styling": {
+    "colorScheme": {
+      "primary": "#87CEEB",
+      "secondary": "#F5DEB3",
+      "accent": "#4A90A4",
+      "text": "#2C3E50",
+      "textLight": "#5A6C7D",
+      "background": "#FFFFFF",
+      "backgroundAlt": "#F8F9FA"
+    },
+    "fonts": {
+      "heading": "Cormorant, serif",
+      "body": "Manrope, sans-serif"
+    }
+  },
+  "animations": {
+    "enableLanterns": true,
+    "lanternCount": 8,
+    "enableScrollAnimations": true
+  }
+}

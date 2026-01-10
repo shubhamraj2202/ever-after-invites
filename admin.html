@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Engagement Invitation</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <h1>🔐 Admin Panel</h1>
+            <p>Engagement Invitation Config Manager</p>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+
+                <div id="login-error" class="error-message"></div>
+            </form>
+
+            <div class="hint">
+                <small>Default credentials: <code>admin</code> / <code>admin</code></small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div id="admin-screen" class="screen">
+        <nav class="admin-nav">
+            <div class="nav-left">
+                <h2>💍 Engagement Config Manager</h2>
+            </div>
+            <div class="nav-right">
+                <span id="user-info" class="user-info"></span>
+                <button id="logout-btn" class="btn btn-secondary">Logout</button>
+            </div>
+        </nav>
+
+        <div class="admin-container">
+            <!-- Success/Error Messages -->
+            <div id="message-container"></div>
+
+            <!-- Config Form -->
+            <form id="config-form">
+
+                <!-- Theme Selection -->
+                <section class="config-section">
+                    <h3>🎨 Theme Selection</h3>
+                    <div class="form-group">
+                        <label for="theme_selector">Select Theme</label>
+                        <select id="theme_selector" name="theme">
+                            <option value="">Loading themes...</option>
+                        </select>
+                        <small>Choose a theme template for your invitation</small>
+                    </div>
+                    <div id="theme_preview" class="theme-preview">
+                        <!-- Theme preview will be dynamically loaded here -->
+                    </div>
+                </section>
+
+                <!-- Couple Details -->
+                <section class="config-section">
+                    <h3>👫 Couple Details</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="couple_name1">Name 1</label>
+                            <input type="text" id="couple_name1" name="couple.name1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="couple_name2">Name 2</label>
+                            <input type="text" id="couple_name2" name="couple.name2" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="couple_fullNames">Full Names (Display)</label>
+                        <input type="text" id="couple_fullNames" name="couple.fullNames" required>
+                        <small>Example: "Sonakshi & Shubham"</small>
+                    </div>
+                </section>
+
+                <!-- Event Details -->
+                <section class="config-section">
+                    <h3>📅 Event Details</h3>
+                    <div class="form-group">
+                        <label for="event_title">Event Title</label>
+                        <input type="text" id="event_title" name="event.title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_subtitle">Event Subtitle</label>
+                        <input type="text" id="event_subtitle" name="event.subtitle" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event_date">Date</label>
+                            <input type="text" id="event_date" name="event.date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event_dayOfWeek">Day of Week</label>
+                            <input type="text" id="event_dayOfWeek" name="event.dayOfWeek" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_time">Time</label>
+                        <input type="text" id="event_time" name="event.time" required>
+                    </div>
+                </section>
+
+                <!-- Venue Details -->
+                <section class="config-section">
+                    <h3>📍 Venue Details</h3>
+                    <div class="form-group">
+                        <label for="venue_name">Venue Name</label>
+                        <input type="text" id="venue_name" name="event.venue.name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_address">Address</label>
+                        <textarea id="venue_address" name="event.venue.address" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue_googleMapsLink">Google Maps Link</label>
+                        <input type="url" id="venue_googleMapsLink" name="event.venue.googleMapsLink" required>
+                    </div>
+                </section>
+
+                <!-- Content/Messages -->
+                <section class="config-section">
+                    <h3>💬 Content & Messages</h3>
+                    <div class="form-group">
+                        <label for="content_heroMessage">Hero Message</label>
+                        <input type="text" id="content_heroMessage" name="content.heroMessage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_ourStoryTitle">Our Story Title</label>
+                        <input type="text" id="content_ourStoryTitle" name="content.ourStoryTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_ourStory">Our Story Text</label>
+                        <textarea id="content_ourStory" name="content.ourStory" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_rsvpTitle">RSVP Title</label>
+                        <input type="text" id="content_rsvpTitle" name="content.rsvpTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_rsvpMessage">RSVP Message</label>
+                        <textarea id="content_rsvpMessage" name="content.rsvpMessage" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_rsvpWhatsApp">WhatsApp Number (with country code)</label>
+                        <input type="tel" id="content_rsvpWhatsApp" name="content.rsvpWhatsApp" required>
+                        <small>Example: +919876543210</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_rsvpWhatsAppMessage">WhatsApp Message Template</label>
+                        <textarea id="content_rsvpWhatsAppMessage" name="content.rsvpWhatsAppMessage" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_hashtag">Event Hashtag</label>
+                        <input type="text" id="content_hashtag" name="content.hashtag" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content_galleryTitle">Gallery Title</label>
+                        <input type="text" id="content_galleryTitle" name="content.galleryTitle" required>
+                    </div>
+                </section>
+
+                <!-- Footer -->
+                <section class="config-section">
+                    <h3>📝 Footer</h3>
+                    <div class="form-group">
+                        <label for="footer_thankYouMessage">Thank You Message</label>
+                        <input type="text" id="footer_thankYouMessage" name="footer.thankYouMessage" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="footer_contactEmail">Contact Email</label>
+                        <input type="email" id="footer_contactEmail" name="footer.contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="footer_year">Year</label>
+                        <input type="text" id="footer_year" name="footer.year" required>
+                    </div>
+                </section>
+
+                <!-- Color Scheme -->
+                <section class="config-section">
+                    <h3>🎨 Color Scheme</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="color_primary">Primary Color</label>
+                            <input type="color" id="color_primary" name="styling.colorScheme.primary" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="color_secondary">Secondary Color</label>
+                            <input type="color" id="color_secondary" name="styling.colorScheme.secondary" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="color_accent">Accent Color</label>
+                            <input type="color" id="color_accent" name="styling.colorScheme.accent" required>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Animations -->
+                <section class="config-section">
+                    <h3>✨ Animations</h3>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="animations_enableLanterns" name="animations.enableLanterns">
+                            Enable Floating Lanterns
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="animations_lanternCount">Lantern Count</label>
+                        <input type="number" id="animations_lanternCount" name="animations.lanternCount" min="1" max="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="animations_enableScrollAnimations" name="animations.enableScrollAnimations">
+                            Enable Scroll Animations
+                        </label>
+                    </div>
+                </section>
+
+                <!-- Submit Buttons -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+                    <button type="button" id="reset-btn" class="btn btn-secondary">↺ Reset Form</button>
+                    <button type="button" id="view-json-btn" class="btn btn-secondary">📄 View JSON</button>
+                </div>
+
+            </form>
+
+            <!-- Backups Section -->
+            <section class="config-section backups-section">
+                <h3>📦 Config Backups</h3>
+                <button id="refresh-backups-btn" class="btn btn-secondary">↻ Refresh</button>
+                <div id="backups-list"></div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- JSON Viewer Modal -->
+    <div id="json-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📄 Config JSON</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre id="json-display"></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-client.js"></script>
+
+</body>
+</html>

@@ -9,19 +9,10 @@ const API_BASE = 'http://localhost:3000/api';
 let authToken = localStorage.getItem('authToken');
 let currentConfig = null;
 
-// DOM Elements
-const loginScreen = document.getElementById('login-screen');
-const adminScreen = document.getElementById('admin-screen');
-const loginForm = document.getElementById('login-form');
-const configForm = document.getElementById('config-form');
-const loginError = document.getElementById('login-error');
-const userInfo = document.getElementById('user-info');
-const logoutBtn = document.getElementById('logout-btn');
-const messageContainer = document.getElementById('message-container');
-const jsonModal = document.getElementById('json-modal');
-const viewJsonBtn = document.getElementById('view-json-btn');
-const resetBtn = document.getElementById('reset-btn');
-const refreshBackupsBtn = document.getElementById('refresh-backups-btn');
+// DOM Elements (will be initialized on DOMContentLoaded)
+let loginScreen, adminScreen, loginForm, configForm, loginError;
+let userInfo, logoutBtn, messageContainer, jsonModal;
+let viewJsonBtn, resetBtn, refreshBackupsBtn;
 
 // ============================================
 // Utility Functions
@@ -88,11 +79,13 @@ function getNestedValue(obj, path) {
 
 async function login(username, password) {
   try {
+    console.log('Attempting login...', username);
     const data = await apiRequest('/login', {
       method: 'POST',
       body: JSON.stringify({ username, password })
     });
 
+    console.log('Login successful:', data);
     authToken = data.token;
     localStorage.setItem('authToken', authToken);
     localStorage.setItem('user', JSON.stringify(data.user));
@@ -100,6 +93,7 @@ async function login(username, password) {
     showAdminScreen(data.user);
     loadConfig();
   } catch (error) {
+    console.error('Login error:', error);
     showError(loginError, error.message);
   }
 }
@@ -359,54 +353,88 @@ async function restoreBackup(filename) {
 }
 
 // ============================================
-// Event Listeners
-// ============================================
-
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  login(username, password);
-});
-
-logoutBtn.addEventListener('click', logout);
-
-configForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  saveConfig();
-});
-
-resetBtn.addEventListener('click', () => {
-  if (confirm('Are you sure you want to reset the form to the last saved state?')) {
-    populateForm(currentConfig);
-  }
-});
-
-viewJsonBtn.addEventListener('click', () => {
-  const config = getFormConfig();
-  document.getElementById('json-display').textContent = JSON.stringify(config, null, 2);
-  jsonModal.classList.add('active');
-});
-
-document.querySelector('.modal-close').addEventListener('click', () => {
-  jsonModal.classList.remove('active');
-});
-
-jsonModal.addEventListener('click', (e) => {
-  if (e.target === jsonModal) {
-    jsonModal.classList.remove('active');
-  }
-});
-
-refreshBackupsBtn.addEventListener('click', loadBackups);
-
-// Make restoreBackup available globally
-window.restoreBackup = restoreBackup;
-
-// ============================================
 // Initialize
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, initializing admin panel...');
+
+  // Initialize DOM elements
+  loginScreen = document.getElementById('login-screen');
+  adminScreen = document.getElementById('admin-screen');
+  loginForm = document.getElementById('login-form');
+  configForm = document.getElementById('config-form');
+  loginError = document.getElementById('login-error');
+  userInfo = document.getElementById('user-info');
+  logoutBtn = document.getElementById('logout-btn');
+  messageContainer = document.getElementById('message-container');
+  jsonModal = document.getElementById('json-modal');
+  viewJsonBtn = document.getElementById('view-json-btn');
+  resetBtn = document.getElementById('reset-btn');
+  refreshBackupsBtn = document.getElementById('refresh-backups-btn');
+
+  console.log('DOM elements initialized:', { loginForm, loginScreen, adminScreen });
+
+  // Attach event listeners
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      console.log('Login form submitted');
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      login(username, password);
+    });
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', logout);
+  }
+
+  if (configForm) {
+    configForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      saveConfig();
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (confirm('Are you sure you want to reset the form to the last saved state?')) {
+        populateForm(currentConfig);
+      }
+    });
+  }
+
+  if (viewJsonBtn) {
+    viewJsonBtn.addEventListener('click', () => {
+      const config = getFormConfig();
+      document.getElementById('json-display').textContent = JSON.stringify(config, null, 2);
+      jsonModal.classList.add('active');
+    });
+  }
+
+  const modalClose = document.querySelector('.modal-close');
+  if (modalClose) {
+    modalClose.addEventListener('click', () => {
+      jsonModal.classList.remove('active');
+    });
+  }
+
+  if (jsonModal) {
+    jsonModal.addEventListener('click', (e) => {
+      if (e.target === jsonModal) {
+        jsonModal.classList.remove('active');
+      }
+    });
+  }
+
+  if (refreshBackupsBtn) {
+    refreshBackupsBtn.addEventListener('click', loadBackups);
+  }
+
+  // Make restoreBackup available globally
+  window.restoreBackup = restoreBackup;
+
+  // Verify authentication
   verifyAuth();
 });

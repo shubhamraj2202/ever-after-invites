@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile
+.dockerignore
+
+# IDE / Editor
+.idea
+.vscode
+*.swp
+
+# Python
+__pycache__/
+venv/
+*.pyc
+*.pyo
+*.pyd
+
+# Local config
+.env
+config.backup.*.json
+
+# Node
+node_modules/
+npm-debug.log
+
+# OS
+.DS_Store
+Thumbs.db

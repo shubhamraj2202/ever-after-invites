@@ -19,6 +19,7 @@ config.backup.*.json
 .env
 .env.local
 .env.production
+.env.gcp
 
 # IDE
 .vscode/
@@ -50,4 +51,4 @@ temp/
 # OS
 Thumbs.db
 .DS_Store
-beach-wedding-invite/
+.dumps

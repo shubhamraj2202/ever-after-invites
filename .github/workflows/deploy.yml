@@ -47,8 +47,7 @@ jobs:
           service: ${{ env.SERVICE_NAME }}
           region: ${{ env.REGION }}
           image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO_NAME }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
-          flags: '--allow-unauthenticated'
-        # Allow unauthenticated access to the service so anyone can view the invitation
+          flags: '--allow-unauthenticated' # Allow unauthenticated access to the service so anyone can view the invitation
 
       - name: Output Deployed URL
         run: echo "Deployed to: ${{ steps.deploy.outputs.url }}"
